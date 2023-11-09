@@ -11,6 +11,11 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
+const close = document.querySelector(".close");
+const btnSubmit = document.querySelector("btn-submit")
+const modalBody = document.querySelector("modal-body")
+const form = document.getElementById("form")
+
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -22,7 +27,7 @@ function launchModal() {
 
 // closing modal form 
 close.addEventListener ("click", function() {
-  modalbg.style.display = "none"
+  modalbg.style.display = "none";
 });
 
 
@@ -100,5 +105,18 @@ function showCorectMessage(){
   let thankYouMsg = document.createElement("p");
   thankYouMsg.classList.add("thanks-msg");
   let thanksNote = document.createTextNode("Thank You for Registering")
+  body.appendChild("newMsg");
+  newMsg.appendChild("thankYouMsg");
+  thankYouMsg.appendChild("thanksNote");
+  //Create a button
+  let newBtn = document.createElement("button");
+  newBtn.classList.add("btn-submit");
+  let newBtnText = document.createTextNode("Close");
+  newBtn.appendChild("newBtnText");
+  body.appendChild("newBtn")
+  // By clicking on Close button the modal window close
+  newBtn.addEventListener("click", function(){
+    modalbg.style.display ="none"
+  })
 
 }
