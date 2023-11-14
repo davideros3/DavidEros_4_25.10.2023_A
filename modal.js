@@ -33,9 +33,6 @@ close.addEventListener ("click", function() {
 
 
 
-
-
-
 // DOM elements 
 
 const firstName = document.getElementById("first");
@@ -47,6 +44,14 @@ const whereToParticipate = document.querySelectorAll("type=radio");
 const checkBoxMandatory = document.getElementById("checkbox1");
 const submit = document.querySelector("btn-submit");
 
+function valueChecking(input, show) {
+  if (input.getAttribute("data-error-visible") !== null) {
+    input.setAttribute("data-error-visible", show);
+  } else {
+    input.parentElement.setAttribute("data-error-visible", show);
+  }
+}
+
 
  //Function Validation by clicking on submit button
 function validate() {
@@ -56,43 +61,90 @@ function validate() {
   // First validated object is First Name, I set up the a valaidation for at least four letter !
   const resultFirstName = firstName.value.trim();
 
-  if(resultFirstName.lenght > 4) {
+  if(resultFirstName.value === "" || resultFirstName.lenght < 3) {
     isCorect = false;
+    valueChecking(firstName, true);
 
   }
 
   else {
-    isCorect = true;
+    valueChecking(firstName, false);
 
   }
   // Second validated object is Lasst Name, I set up the a valaidation for at least four letter !
   const resultLastName = lastName.value.trim();
 
-  if(resultLaststName.lenght > 4) {
+  if(resultLastName.value = "" || resultLastName.lenght > 3) {
     isCorect = false;
+    valueChecking(lastName, true);
 
   }
-
   else {
     isCorect = true;
+    valueChecking(lastName, false);
 
   }
   // Third validated object is Email, Correct validation is will be return is na case that the first part of code contain at least
   // 4 letter or nummer +@ + 3letter or nummer . 3letter or nummer
   const resultEmail = email.value.trim();
   const regexEmail = /^[a-z0-9]+([_|\.|-]{4}[a-z0-9]+)*@[a-z0-9]+([_|\.|-]­{3}[a-z0-9]+)*[\.]{1}[a-z]{3}$/;
-  if(resultEmail == "") {
+  if(resultEmail == "" || regexEmail.exec(resultEmail) == null) {
     isCorect = false;
+    valueChecking(email, true);
   }
-  else if (regexEmail.exec(resultEmail) == null) {
-    isSuccessful = false;}
-
+  
   else {
     isCorect = true;
+    valueChecking(email, false);
+
   }
+  // date of birth validation
+  const resultBirthDate = birthDate.value;
+  if (resultBirthDate= "" ) {
+    isCorect = false;
+    valueChecking(birthDate, true);
+  }
+  else {
+    isCorect = true;
+    valueChecking(birthDate, false);
+  }
+  // number of tournament validation
+  const resultTournamentAttend = tournamentAttend.value;
+  if (resultTournamentAttend = "") {
+    isCorect = false;
+    valueChecking(tournamentAttend, true);
+  }
+  else {
+    isCorect = true;
+    valueChecking(tournamentAttend, false);
+  }
+  // Select a city validation
+  const resultWhereToParticipate = whereToParticipate.checked
+  if (resultWhereToParticipate === false) {
+    valueChecking(whereToParticipate, false);
+
+  }
+  // Mandatory checkbox validation
+  
+  if (checkBoxMandatory.checked == true) {
+    valueChecking(checkBoxMandatory, true);
+
+  }
+  else {
+    isCorect = false;
+    valueChecking(checkBoxMandatory, false)
+  }
+
+  if (isCorect === true) {
+    showCorectMessage();
+  }
+
+  return false;
+
 
    
 };
+
 
 
 // Function to post a Correct message 
@@ -104,13 +156,13 @@ function showCorectMessage(){
   // creating a paragrapf
   let thankYouMsg = document.createElement("p");
   thankYouMsg.classList.add("thanks-msg");
-  let thanksNote = document.createTextNode("Thank You for Registering")
+  let thanksNote = document.createTextNode("Thank You for Registation")
   body.appendChild("newMsg");
   newMsg.appendChild("thankYouMsg");
   thankYouMsg.appendChild("thanksNote");
-  //Create a button
+  //Creating a close button
   let newBtn = document.createElement("button");
-  newBtn.classList.add("btn-submit");
+  newBtn.classList.add("btn-closing");
   let newBtnText = document.createTextNode("Close");
   newBtn.appendChild("newBtnText");
   body.appendChild("newBtn")

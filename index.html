@@ -64,7 +64,7 @@
               onsubmit="return validate();">
               
               <div
-                class="formData">
+                class="formData" data-error="The First name must contain at least three characters" data-error-visible="false">
                 <label>First Name</label><br>
                 <input
                   class="text-control"
@@ -75,7 +75,7 @@
                 /><br>
               </div>
               <div
-                class="formData">
+                class="formData" data-error="The Last name must contain at least three characters" data-error-visible="false">
                 <label>Last Name</label><br>
                 <input
                   class="text-control"
@@ -85,7 +85,7 @@
                 /><br>
               </div>
               <div
-                class="formData">
+                class="formData" data-error="Please provide valid E-mail " data-error-visible="false">
                 <label>Email</label><br>
                 <input
                   class="text-control"
@@ -95,7 +95,7 @@
                 /><br>
               </div>
               <div
-                class="formData">
+                class="formData" data-error="Please provide valid date of birth " data-error-visible="false">
                 <label>Birthdate</label><br>
                 <input
                   class="text-control"
@@ -105,13 +105,13 @@
                 /><br>
               </div>
               <div
-                class="formData">
+                class="formData" data-error="Please indicate the valid number of participants" data-error-visible="false">
                 <label>How many tournaments have you attended? </label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
               </div>
               <p class="text-label">Where do you want to participate this year?</p>
               <div
-                class="formData">
+                class="formData" data-error="Select one of the options" data-error-visible="false" >
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -181,7 +181,7 @@
               </div>
 
               <div
-                class="formData">
+                class="formData" data-error="This field is mandatory" data-error-visible="false">
                 <input
                   class="checkbox-input"
                   type="checkbox"
