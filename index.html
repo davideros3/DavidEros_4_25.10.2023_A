@@ -61,11 +61,11 @@
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate();">
+              onsubmit=" validate()">
               
               <div
                 class="formData" data-error="The First name must contain at least three characters" data-error-visible="false">
-                <label>First Name</label><br>
+                <label for="first">First Name</label><br>
                 <input
                   class="text-control"
                   type="text"
@@ -76,7 +76,7 @@
               </div>
               <div
                 class="formData" data-error="The Last name must contain at least three characters" data-error-visible="false">
-                <label>Last Name</label><br>
+                <label for="last">Last Name</label><br>
                 <input
                   class="text-control"
                   type="text"
@@ -86,7 +86,7 @@
               </div>
               <div
                 class="formData" data-error="Please provide valid E-mail " data-error-visible="false">
-                <label>Email</label><br>
+                <label for="email">Email</label><br>
                 <input
                   class="text-control"
                   type="email"
@@ -96,7 +96,7 @@
               </div>
               <div
                 class="formData" data-error="Please provide valid date of birth " data-error-visible="false">
-                <label>Birthdate</label><br>
+                <label for="birthdate">Birthdate</label><br>
                 <input
                   class="text-control"
                   type="date"
@@ -111,7 +111,7 @@
               </div>
               <p class="text-label">Where do you want to participate this year?</p>
               <div
-                class="formData" data-error="Select one of the options" data-error-visible="false" >
+                class="formData" data-error="Select one of the options" data-error-visible="false" id="all-location" >
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -179,7 +179,7 @@
                   Portland</label
                 >
               </div>
-
+              <!-- First Checkbox (Terms of use ) -->
               <div
                 class="formData" data-error="This field is mandatory" data-error-visible="false">
                 <input
@@ -193,6 +193,7 @@
                   I have read and I agree to GameOn's terms and conditions.
                 </label>
                 <br>
+
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
@@ -205,6 +206,8 @@
                 type="submit"
                 class="button"
                 value="Go"
+                onsubmit=" preventDefault()"
+                
               />
             </form>
           </div>
