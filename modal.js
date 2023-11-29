@@ -23,6 +23,8 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+  form.reset();
+  removeSuccessMessage();
 }
 
 // closing modal form 
@@ -31,7 +33,7 @@ close.addEventListener ("click", function() {
 });
 
 
-
+// Function to remove success message and display validation form
 
 // DOM elements 
 
@@ -80,7 +82,7 @@ function checkLastName() {
 // Third validated object is Email, Correct validation is will be return is na case that the first part of code contain at least
 // 4 letter or nummer +@ + 3letter or nummer . 3letter or nummer
 function checkEmail() {
-const regexEmail = /^[a-z0-9]+([_|\.|-]{4}[a-z0-9]+)*@[a-z0-9]+([_|\.|-]­{3}[a-z0-9]+)*[\.]{1}[a-z]{3}$/;
+const regexEmail =  /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   // Checking if the input is matching with a email regex
   if (email.value.match(regexEmail)) {
     // In case the value if email matching with regex it will apear the grenn border
@@ -158,7 +160,9 @@ function checkboxMand() {
     return false;
   }
 }
-// Function to perform all field validations
+
+
+
 // Call individual validation functions
 function allFieldValidation() {
   checkFirstName();
@@ -195,7 +199,8 @@ form.addEventListener("submit", function (e) {
   e.preventDefault();
   if (validate() === true) {
     showCorectMessage();
-    // document.querySelector("form").reset();
+    document.querySelector("form").reset();
+    
   } else {
     //else go back in allFieldValidation
     allFieldValidation();
@@ -207,7 +212,11 @@ form.addEventListener("submit", function (e) {
 
 
 
+
+
 // Function Show correct message  
+
+
 function showCorectMessage() {
   const body = document.querySelector(".modal-body");
 
@@ -230,12 +239,24 @@ function showCorectMessage() {
   newBtn.appendChild(newBtnText);
   body.appendChild(newBtn);
 
-  // By clicking on close button modal window close !
-  newBtn.addEventListener("click", function () {
-    modalbg.style.display = "none";
-  });
 
-  modalbg.style.display = "block";
+  // By clicking on close button modal window close !
+  newBtn.addEventListener("click", function  (e) {
+    modalbg.style.display = "none";
+    
+    
+    
+    
+    
+    
+    
+   
+  
+    
+    
+    
+  });
+  
 }
 
 
